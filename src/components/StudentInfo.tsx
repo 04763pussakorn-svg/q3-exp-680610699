@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge"
 
 export function StudentInfo() {
   return (
+    
     <Drawer swipeDirection="left">
       <DrawerTrigger>
         <div className="flex-1 p-4">

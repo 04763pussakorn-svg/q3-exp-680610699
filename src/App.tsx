@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { AddItemDialog } from "./components/AddItemDialog";
 import { ItemList } from "./components/ItemList";
 import { Footer } from "./components/Footer";
 import { OverviewCards } from "./components/OverviewCards";
+import { CategoryCards } from "./components/CategoryCards";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
+import { Logs, Grip } from "lucide-react";
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState("Overview");
+
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Main Content Area */}
@@ -22,9 +28,26 @@ export default function App() {
             <AddItemDialog />
           </div>
 
-          {/* Put OverviewCards and CategoryCards under DashboardTabs */}
-          {/* And then use DashboardTabs here instead */}
-          <OverviewCards />
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
+            <TabsList>
+              <TabsTrigger value="Overview">
+                <Logs className="h-4 w-4" />
+                Overview
+              </TabsTrigger>
+              <TabsTrigger value="By Category">
+                <Grip className="h-4 w-4" />
+                By Category
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="Overview">
+              <OverviewCards />
+            </TabsContent>
+            <TabsContent value="By Category">
+              <CategoryCards />
+            </TabsContent>
+          </Tabs>
+
           <ItemList />
         </div>
       </main>

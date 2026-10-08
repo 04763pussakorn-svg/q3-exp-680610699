@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+
 const iconMap: Record<string, React.ReactNode> = {
   Food: <Utensils className="h-4 w-4" />,
   Transport: <Car className="h-4 w-4" />,
@@ -23,6 +24,7 @@ export function CategoryCards() {
   const expenses = useItemStore((state) => state.expenses);
 
   return (
+    
     <div className="grid gap-2 md:grid-cols-6">
       {categoryOptions.map((category) => {
         const categoryExpenses = expenses.filter(
@@ -35,9 +37,17 @@ export function CategoryCards() {
 
         return (
           // Use Card component to display values by category
-          <div>
-            {category.label} - ฿{categoryTotal.toFixed(2)}
-          </div>
+          <Card key={category.value}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                {iconMap[category.value]}
+                {category.label}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-2xl font-bold">฿{categoryTotal.toFixed(2)}</p>
+            </CardContent>
+          </Card>
         );
       })}
     </div>
