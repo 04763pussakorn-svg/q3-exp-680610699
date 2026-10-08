@@ -24,6 +24,9 @@ export function StudentInfo() {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
+          <picture>
+            <img src="/PIC.svg" alt="Student Image" className="w-100 h-100 " />
+          </picture>
           <DrawerTitle>ข้อมูลนักศึกษา</DrawerTitle>
           <DrawerDescription>
             Student information
