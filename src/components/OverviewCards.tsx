@@ -12,7 +12,7 @@ export function OverviewCards() {
           <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl text-red-500 font-bold">฿...</div>
+          <div className="text-2xl text-red-500 font-bold">฿{expenses.reduce((sum, expense) => sum + expense.amount, 0).toFixed(2)}</div>
         </CardContent>
       </Card>
       <Card>
@@ -30,7 +30,9 @@ export function OverviewCards() {
           <CardTitle className="text-sm font-medium">Average Expense</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl text-green-700 font-bold">...</div>
+          <div className="text-2xl text-green-700 font-bold">
+            ฿{(expenses.reduce((sum, expense) => sum + expense.amount, 0) / Math.max(totalItems, 1)).toFixed(2)}
+          </div>
         </CardContent>
       </Card>
     </div>
